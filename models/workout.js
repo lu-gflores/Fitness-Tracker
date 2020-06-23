@@ -40,5 +40,6 @@ const WorkoutSchema = new Schema({
         type: Number
     }
 });
+//need to create a method to display total workout duration?
 const Workout = monogoose.model("Workout", WorkoutSchema);
 module.exports = Workout;

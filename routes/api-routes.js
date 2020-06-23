@@ -25,7 +25,7 @@ module.exports = function (app) {
 
     //update previous workout plan
     app.put("/api/workouts/:id", (req, res) => {
-    db.Workout.findOneAndUpdate(
+    db.Workout.updateOne(
         {_id: req.params.id}, {$push: {exercises: req.body }}, (err, updateWorkout) => {
             if (err) res.status(500).json(err);
             res.json(updateWorkout);
@@ -42,5 +42,4 @@ module.exports = function (app) {
             res.json(err);
         });
     });
-    
 }
