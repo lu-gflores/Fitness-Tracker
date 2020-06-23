@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const path = require("path");
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -16,22 +16,11 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useUnifiedTopology: true });
 
-// app.use(require("./routes/api-routes.js"));
-// app.use(require("./routes/html-routes.js"));
+require('./routes/html-routes')(app);
+//require('./routes/api-routes')(app);
 
 app.listen(PORT, () => {
     console.log("App running on port " + PORT);
 });
 
 //html routes
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'))
-});
-
-app.get('/exercise', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/exercise.html'))
-});
-
-app.get('/stats', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/stats.html'))
-});
