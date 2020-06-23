@@ -13,7 +13,15 @@ module.exports = function (app) {
     });
 
     //create a new workout plan
-
+    app.post("/api/workout", ({body}, res) => {
+        db.Workout.create(body)
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        })
+    });
 
     //update previous workout plan
 
