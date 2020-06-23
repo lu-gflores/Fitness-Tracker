@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = function (app) {
     //get all workoutes
-    app.get('/api/workout', (req, res) => {
+    app.get('/api/workouts', (req, res) => {
         db.Workout.find({})
             .then(dbWorkout => {
                 res.json(dbWorkout);
@@ -13,7 +13,7 @@ module.exports = function (app) {
     });
 
     //create a new workout plan
-    app.post("/api/workout", ({body}, res) => {
+    app.post("/api/workouts", ({body}, res) => {
         db.Workout.create(body)
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -24,7 +24,13 @@ module.exports = function (app) {
     });
 
     //update previous workout plan
-
+    app.put("/api/workouts/:id", (req, res) => {
+    db.Workout.findOneAndUpdate(
+        {_id: req.params.id}, {$push: {exercises: req.body }}, (err, updateWorkout) => {
+            if (err) res.status(500).json(err);
+            res.json(updateWorkout);
+        });
+    });
     //logging multiple exercises
 
     //track exercise
