@@ -6,7 +6,7 @@
 ![Image of Fitness Tracker](Assets/fitnessMain.jpg)
 
 ## Description 
-    This application allows users to create, view, and track their daily workouts. It allows users to log multiple exercises in a workout based on the day. They can keep track specific variables based on the type of exercise, cardio or resistance. 
+This application allows users to create, view, and track their daily workouts. It allows users to log multiple exercises in a workout based on the day. They can keep track specific variables based on the type of exercise, cardio or resistance. 
 
 ## Table of Contents
 
