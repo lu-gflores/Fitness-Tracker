@@ -31,7 +31,16 @@ module.exports = function (app) {
             res.json(updateWorkout);
         });
     });
-    //logging multiple exercises
 
-    //track exercise
+    //logging range
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.find({})
+        .then(dbRange => {
+            res.json(dbRange);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+    });
+    
 }

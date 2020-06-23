@@ -35,7 +35,10 @@ const WorkoutSchema = new Schema({
                 type: Number
             }
         }
-    ]
+    ],
+    totalDuration : {
+        type: Number
+    }
 });
 const Workout = monogoose.model("Workout", WorkoutSchema);
 module.exports = Workout;
