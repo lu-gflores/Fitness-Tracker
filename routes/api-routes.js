@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = function (app) {
-    //get all workoutes
+    //get all workouts
     app.get('/api/workouts', (req, res) => {
         db.Workout.find({})
             .then(dbWorkout => {
@@ -26,7 +26,7 @@ module.exports = function (app) {
     //update previous workout plan
     app.put("/api/workouts/:id", (req, res) => {
     db.Workout.updateOne(
-        {_id: req.params.id}, {$push: {exercises: req.body }}, (err, updateWorkout) => {
+        {_id: req.params.id}, {$push: {exercises: req.body }, $inc:{totalDuration: req.body.duration}}, (err, updateWorkout) => {
             if (err) res.status(500).json(err);
             res.json(updateWorkout);
         });
